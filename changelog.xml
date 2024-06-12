@@ -1,0 +1,89 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="yourname">
+		<sql>
+			CREATE TYPE my_enum AS ENUM ('S', 'WSW', 'NNW', 'W', 'N', 'SSE', 'SW', 'ENE', 'WNW', 'NW', 'SSW', 'E', 'SE', 'NNE', 'ESE', 'NE');
+			
+		</sql>
+        <createTable tableName="weather">
+			<column name="go_outside" type="bool"/>
+            <column name="country" type="varchar(255)"/>
+			<column name="location_name" type="varchar(255)"/>
+			<column name="timezone" type="varchar(255)"/>
+			<column name="wind_degree" type="int"/>
+			<column name="last_updated_epoch" type="int"/>
+			<column name="moon_illumination" type="int"/>
+			<column name="wind_kph" type="float"/>
+			<column name="latitude" type="float"/>
+			<column name="longitude" type="float"/>
+			<column name="last_updated" type="date YYYY-MM-DD HH:MM"/>
+			<column name="sunrise" type="time HH:MM AM"/>
+			<column name="sunset" type="time HH:MM AM"/>
+			<column name="moonrise" type="time HH:MM AM"/>
+			<column name="air_quality_Carbon_Monoxide" type="float"/>
+			<column name="air_quality_Ozone" type="float"/>
+			<column name="air_quality_Nitrogen_dioxide" type="float"/>
+			<column name="air_quality_Sulphur_dioxide" type="float"/>
+			<column name="air_quality_PM2.5" type="float"/>
+			<column name="air_quality_PM10" type="float"/>
+			<column name="air_quality_us-epa-index" type="float"/>
+			<column name="air_quality_gb-defra-index" type="float"/>
+        </createTable>
+    </changeSet>
+	<changeSet id="2" author="yourname">
+		<addColumn tableName="weather">
+            <column name="wind_direction" type="my_enum"/>
+        </addColumn>
+		<loadData
+            file="GlobalWeatherRepository.csv"
+            tableName="weather"
+        >
+			<column name="go_outside" type="bool"/>
+            <column name="country" type="varchar(255)"/>
+			<column name="location_name" type="varchar(255)"/>
+			<column name="timezone" type="varchar(255)"/>
+			<column name="wind_degree" type="int"/>
+			<column name="last_updated_epoch" type="int"/>
+			<column name="moon_illumination" type="int"/>
+			<column name="wind_kph" type="float"/>
+			<column name="latitude" type="float"/>
+			<column name="longitude" type="float"/>
+			<column name="last_updated" type="date YYYY-MM-DD HH:MM"/>
+			<column name="sunrise" type="time HH:MM AM"/>
+			<column name="sunset" type="time HH:MM AM"/>
+			<column name="moonrise" type="time HH:MM AM"/>
+			<column name="air_quality_Carbon_Monoxide" type="float"/>
+			<column name="air_quality_Ozone" type="float"/>
+			<column name="air_quality_Nitrogen_dioxide" type="float"/>
+			<column name="air_quality_Sulphur_dioxide" type="float"/>
+			<column name="air_quality_PM2.5" type="float"/>
+			<column name="air_quality_PM10" type="float"/>
+			<column name="air_quality_us-epa-index" type="float"/>
+			<column name="air_quality_gb-defra-index" type="float"/>
+			<column name="temperature_celsius" type="skip"/>
+			<column name="temperature_fahrenheit" type="skip"/>
+			<column name="wind_mph" type="skip"/>
+			<column name="pressure_mb" type="skip"/>
+			<column name="pressure_in" type="skip"/>
+			<column name="precip_mm" type="skip"/>
+			<column name="cloud" type="skip"/>
+			<column name="humidity" type="skip"/>
+			<column name="feels_like_celsius" type="skip"/>
+			<column name="feels_like_fahrenheit" type="skip"/>
+			<column name="visibility_km" type="skip"/>
+			<column name="visibility_miles" type="skip"/>
+			<column name="uv_index" type="skip"/>
+			<column name="gust_mph" type="skip"/>
+			<column name="gust_kph" type="skip"/>
+			<column name="moon_phase" type="skip"/>
+			<column name="condition_text" type="skip"/>
+			<column name="precip_in" type="skip"/>
+			<column name="moonset" type="skip"/>
+		</loadData>
+    </changeSet>
+
+</databaseChangeLog>
