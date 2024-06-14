@@ -24,6 +24,19 @@ def goOutside():
         db.commit()
         db.refresh(row)
 
-goOutside()
+def getWeatherData(country, location, date):
+    result = db.query(Entry).filter(Entry.country == country, Entry.location_name == location, cast(Entry.last_updated,Date) == date)
+    n=0
+    for row in result:
+        n+=1
+        print(f"\nENTRY {n}\n")
+        dict_ = list(row.__dict__.items())[1:]
+        for k, v in dict_:
+            print(f"{str(k)}: {str(v)}")
+#goOutside()
+country = input("Введіть назву країни: ")
+location = input("Введіть локацію: ")
+date = input("Введіть дату (YYYY-MM-DD): ")
+getWeatherData(country, location, date)
 # Закриття сесії
 db.close()
