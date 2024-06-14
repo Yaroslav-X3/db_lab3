@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ooo_g (generated)" id="1718367056287-1">
+        <createTable tableName="weather">
+            <column name="go_outside" type="BOOLEAN"/>
+            <column name="country" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_some_table"/>
+            </column>
+            <column name="location_name" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_some_table"/>
+            </column>
+            <column name="timezone" type="VARCHAR(255)"/>
+            <column name="wind_degree" type="INTEGER"/>
+            <column name="last_updated_epoch" type="INTEGER"/>
+            <column name="moon_illumination" type="INTEGER"/>
+            <column name="wind_kph" type="FLOAT8"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column name="last_updated" type="DATETIME DEFAULT '0000-00-00 00:00'">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_some_table"/>
+            </column>
+            <column name="sunrise" type="time(6) WITHOUT TIME ZONE"/>
+            <column name="sunset" type="time(6) WITHOUT TIME ZONE"/>
+            <column name="air_quality_Carbon_Monoxide" type="FLOAT8"/>
+            <column name="air_quality_Ozone" type="FLOAT8"/>
+            <column name="air_quality_Nitrogen_dioxide" type="FLOAT8"/>
+            <column name="air_quality_Sulphur_dioxide" type="FLOAT8"/>
+            <column name="air_quality_PM2_5" type="FLOAT8"/>
+            <column name="air_quality_PM10" type="FLOAT8"/>
+            <column name="air_quality_us_epa_index" type="FLOAT8"/>
+            <column name="air_quality_gb_defra_index" type="FLOAT8"/>
+            <column name="wind_direction" type="ENUM ('S', 'WSW', 'NNW', 'W', 'N', 'SSE', 'SW', 'ENE', 'WNW', 'NW', 'SSW', 'E', 'SE', 'NNE', 'ESE', 'NE')"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
